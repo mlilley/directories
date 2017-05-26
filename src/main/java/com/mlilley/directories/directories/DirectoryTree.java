@@ -5,7 +5,6 @@ import com.mlilley.directories.exceptions.DirectoryAlreadyExistsException;
 import com.mlilley.directories.exceptions.DirectoryNotFoundException;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class DirectoryTree {
@@ -52,7 +51,11 @@ public class DirectoryTree {
         return String.join(SEPARATOR, dirs);
     }
 
-    public Iterator<String> subdirectories() {
-        return new DirectoryNameIterator(current.subdirectories.iterator());
+    public List<String> subdirectories() {
+        List<String> names = new ArrayList<String>();
+        for (Directory dir : current.subdirectories.dirs()) {
+            names.add(dir.name);
+        }
+        return names;
     }
 }

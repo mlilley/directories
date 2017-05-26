@@ -32,8 +32,8 @@ public class BasicDirectoryStore implements DirectoryStore {
     }
 
     @Override
-    public Iterator<Directory> iterator() {
+    public List<Directory> dirs() {
         Collections.sort(directories);
-        return directories.iterator();
+        return directories;
     }
 }

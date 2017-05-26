@@ -39,9 +39,9 @@ public class SortedDirectoryStore implements DirectoryStore {
     }
 
     @Override
-    public Iterator<Directory> iterator() {
+    public List<Directory> dirs() {
         // already in sorted order
-        return directories.iterator();
+        return directories;
     }
 
     protected int rank(String name) {

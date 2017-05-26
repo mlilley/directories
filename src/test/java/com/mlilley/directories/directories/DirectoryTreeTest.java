@@ -62,7 +62,7 @@ public class DirectoryTreeTest {
     public void canCreateOneSubdir() throws Exception {
         DirectoryTree dt = new DirectoryTree();
         dt.createSubdirectory("dir1");
-        List<String> dirs = subdirectoriesAsList(dt.subdirectories());
+        List<String> dirs = dt.subdirectories();
         assertEquals(1, dirs.size());
         assertEquals(true, dirs.contains("dir1"));
     }
@@ -73,7 +73,7 @@ public class DirectoryTreeTest {
         dt.createSubdirectory("foo");
         dt.createSubdirectory("bar");
         dt.createSubdirectory("baz");
-        List<String> dirs = subdirectoriesAsList(dt.subdirectories());
+        List<String> dirs = dt.subdirectories();
         assertEquals(3, dirs.size());
         assertEquals(true, dirs.contains("foo"));
         assertEquals(true, dirs.contains("bar"));
@@ -88,7 +88,7 @@ public class DirectoryTreeTest {
         dt.createSubdirectory("bar");
         dt.createSubdirectory("baz");
         String path = dt.currentPath();
-        List<String> dirs = subdirectoriesAsList(dt.subdirectories());
+        List<String> dirs = dt.subdirectories();
         assertEquals("root\\foo", path);
         assertEquals(2, dirs.size());
         assertEquals(true, dirs.contains("bar"));
@@ -100,7 +100,7 @@ public class DirectoryTreeTest {
         DirectoryTree dt = new DirectoryTree();
         dt.createSubdirectory("foo");
         dt.createSubdirectory("foo");
-        List<String> dirs = subdirectoriesAsList(dt.subdirectories());
+        List<String> dirs = dt.subdirectories();
         assertEquals(1, dirs.size());
         assertEquals(true, dirs.contains("foo"));
     }
@@ -108,7 +108,7 @@ public class DirectoryTreeTest {
     @Test
     public void newTreeShouldHaveNoSubdirs() {
         DirectoryTree dt = new DirectoryTree();
-        List<String> dirs = subdirectoriesAsList(dt.subdirectories());
+        List<String> dirs = dt.subdirectories();
         assertEquals(true, dirs.isEmpty());
     }
 

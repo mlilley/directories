@@ -1,8 +1,7 @@
 package com.mlilley.directories.commands;
 
 import com.mlilley.directories.directories.DirectoryTree;
-
-import java.util.Iterator;
+import java.util.List;
 
 public class DirCommand extends Command {
     public static final int DIR_WIDTH = 8;
@@ -21,18 +20,16 @@ public class DirCommand extends Command {
         }
 
         String currentPath = directoryTree.currentPath();
-        Iterator<String> subdirectories = directoryTree.subdirectories();
+        List<String> subdirectories = directoryTree.subdirectories();
 
         out.println("Directory of " + currentPath + ":");
-        if (!subdirectories.hasNext()) {
+        if (subdirectories.isEmpty()) {
             out.println("No subdirectories");
         } else {
-            String subdirectory;
-            int i = 0;
-            while(subdirectories.hasNext()) {
-                subdirectory = String.format("%-"+DIR_WIDTH+"s", subdirectories.next());
-                // remove trailing spaces, add \n if arg is last on line or last arg
-                if ((i + 1) % DIRS_PER_LINE == 0 || !subdirectories.hasNext()) {
+            for (int i = 0, n = subdirectories.size(); i < n; i++) {
+                String subdirectory = String.format("%-"+DIR_WIDTH+"s", subdirectories.get(i));
+                // remove trailing spaces, add \n if arg is last on line or last of all
+                if ((i + 1) % DIRS_PER_LINE == 0 || i == n - 1) {
                     subdirectory = subdirectory.trim() + "\n";
                 }
                 out.print(subdirectory);
