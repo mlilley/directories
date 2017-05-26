@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * SortedDirectoryStore
  * Uses an arraylist to store items in sorted order.
- *   - inserts: O(N + logN) (binarysearch + shift down)
+ *   - inserts: O(N) (binarysearch + shift down)
  *   - searches: O(logN) (binarysearch)
  *   - ordered enumeration: O(1) (already sorted)
  */
@@ -40,7 +40,7 @@ public class SortedDirectoryStore implements DirectoryStore {
 
     @Override
     public Iterator<Directory> iterator() {
-        Collections.sort(directories);
+        // already in sorted order
         return directories.iterator();
     }
 
