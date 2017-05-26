@@ -33,7 +33,7 @@ public class BSTDirectoryStore implements DirectoryStore {
         root = null;
     }
 
-    // @Override
+    @Override
     public void add(Directory d) {
         root = add(root, d);
     }
@@ -47,7 +47,7 @@ public class BSTDirectoryStore implements DirectoryStore {
         return current;
     }
 
-    // @Override
+    @Override
     public Directory get(String name) {
         Node result = get(root, name);
         if (result == null) return null;
@@ -62,7 +62,7 @@ public class BSTDirectoryStore implements DirectoryStore {
         else return current;
     }
 
-    // @Override
+    @Override
     public List<Directory> dirs() {
         List<Directory> result = new ArrayList<Directory>();
         inOrder(result, root);
